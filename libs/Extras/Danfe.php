@@ -721,6 +721,27 @@ class Danfe extends CommonNFePHP implements DocumentoNFePHP
                 $this->textoAdic .= "\n Valor Aproximado dos Tributos : R$ " . number_format($vTotTrib, 2, ",", ".");
             }
         }
+        
+        
+        //
+        // MODIFICAÇÃO
+        //
+        // Faz com que os dados do campo INFORMAÇÕES COMPLEMENTARES sejam  
+        // exibidos exatamente como foram enviados no XML da NFe 
+        //
+
+        $this->textoAdic = '';
+
+        if (!empty($this->infAdic->getElementsByTagName('infCpl')->item(0)->nodeValue)) {
+            $this->textoAdic = trim($this->pAnfavea($this->infAdic->getElementsByTagName('infCpl')->item(0)->nodeValue));
+        }
+
+        //
+        // FIM DA MODIFICAÇÃO
+        //
+        
+        
+        
         //fim da alteração NT 2013.003 Lei da Transparência
         $this->textoAdic = str_replace(";", "\n", $this->textoAdic);
         $alinhas = explode("\n", $this->textoAdic);
