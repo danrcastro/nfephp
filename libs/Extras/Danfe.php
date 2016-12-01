@@ -1377,7 +1377,7 @@ class Danfe extends CommonNFePHP implements DocumentoNFePHP
         $this->pTextBox($x, $y, $w, $h, $texto, $aFont, 'T', 'L', 1, '');
         $texto = $this->pSimpleGetValue($this->emit, "IE");
         $aFont = array('font'=>$this->fontePadrao, 'size'=>10, 'style'=>'B');
-        $this->pTextBox($x, $y, $w, $h, $texto, $aFont, 'B', 'C', 0, '');
+        $this->pTextBox($x, $y, $w, $h, $texto, $aFont, 'B', 'L', 0, '');
         //INSCRIÇÃO ESTADUAL DO SUBST. TRIBUT.
         $x += $w;
         $texto = 'INSCRIÇÃO ESTADUAL DO SUBST. TRIBUT.';
