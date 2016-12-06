@@ -2832,7 +2832,8 @@ class Danfe extends CommonNFePHP implements DocumentoNFePHP
               $x = $this->wCanhoto;
         }
         $aFont = array('font'=>$this->fontePadrao, 'size'=>6, 'style'=>'I');
-        $texto = "Impresso em ". date('d/m/Y') . " as " . date('H:i:s');
+        //$texto = "Impresso em ". date('d/m/Y') . " as " . date('H:i:s');
+        $texto = '';
         $this->pTextBox($x, $y, $w, 0, $texto, $aFont, 'T', 'L', false);
         //$texto = "DanfeNFePHP ver. " . $this->version .  "  Powered by NFePHP (GNU/GPLv3 GNU/LGPLv3) © www.nfephp.org";
         $texto = '';
