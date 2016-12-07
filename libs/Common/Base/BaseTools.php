@@ -241,12 +241,13 @@ class BaseTools
         //}
         //carrega os dados de configuração
         //$this->aConfig    = (array) json_decode($configJson);
+        //$this->aDocFormat = (array) $this->aConfig['aDocFormat'];
+        //$this->aProxyConf = (array) $this->aConfig['aProxyConf'];
+        //$this->aMailConf  = (array) $this->aConfig['aMailConf'];
         
         $this->aConfig = (array) $config;
         
-        $this->aDocFormat = (array) $this->aConfig['aDocFormat'];
-        $this->aProxyConf = (array) $this->aConfig['aProxyConf'];
-        $this->aMailConf  = (array) $this->aConfig['aMailConf'];
+
         //seta o timezone
         DateTime::tzdBR($this->aConfig['siglaUF']);
         //carrega os certificados
