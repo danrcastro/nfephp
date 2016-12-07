@@ -230,17 +230,20 @@ class BaseTools
      * @throws Exception\InvalidArgumentException
      * @throws Exception\RuntimeException
      */
-    public function __construct($configJson = '')
+    public function __construct($config = [])
     {
-        if ($configJson == '') {
-            $msg = 'O arquivo de configuração no formato JSON deve ser passado para a classe.';
-            throw new Exception\InvalidArgumentException($msg);
-        }
-        if (is_file($configJson)) {
-            $configJson = Files\FilesFolders::readFile($configJson);
-        }
+        //if ($configJson == '') {
+        //    $msg = 'O arquivo de configuração no formato JSON deve ser passado para a classe.';
+        //   throw new Exception\InvalidArgumentException($msg);
+        //}
+        //if (is_file($configJson)) {
+        //    $configJson = Files\FilesFolders::readFile($configJson);
+        //}
         //carrega os dados de configuração
-        $this->aConfig    = (array) json_decode($configJson);
+        //$this->aConfig    = (array) json_decode($configJson);
+        
+        $this->aConfig = (array) $config;
+        
         $this->aDocFormat = (array) $this->aConfig['aDocFormat'];
         $this->aProxyConf = (array) $this->aConfig['aProxyConf'];
         $this->aMailConf  = (array) $this->aConfig['aMailConf'];
