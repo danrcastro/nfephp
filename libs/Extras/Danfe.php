@@ -1386,10 +1386,7 @@ class Danfe extends CommonNFePHP implements DocumentoNFePHP
                 }
             }
         }
-        
-        if (isset($this->linhaProtocolo)) {
-            $texto = $this->linhaProtocolo;
-        }
+       
         
         $this->pTextBox($x, $y, $w, $h, $texto, $aFont, 'B', 'C', 0, '');
         //####################################################################################
