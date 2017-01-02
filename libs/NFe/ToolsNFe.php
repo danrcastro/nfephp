@@ -443,10 +443,21 @@ class ToolsNFe extends BaseTools
     public function addCancelamento($pathNFefile = '', $pathCancfile = '', $saveFile = false)
     {
         $procXML = '';
-        //carrega a NFe
-        $docnfe = new Dom();
-        $docnfe->loadXMLFile($pathNFefile);
-        $nodenfe = $docnfe->getNode('NFe', 0);
+        
+
+	//carrega a NFe
+ 	$docnfe = new Dom();   
+        //$docnfe->loadXMLFile($pathNFefile);
+    	if (file_exists($pathNFefile)) {
+            //carrega o XML pelo caminho do arquivo informado
+            $docnfe->loadXMLFile($pathNFefile);
+        } else {
+            //carrega o XML pelo conteúdo
+            $docnfe->loadXMLString($pathNFefile);
+        }
+	    
+        
+	$nodenfe = $docnfe->getNode('NFe', 0);
         if ($nodenfe == '') {
             $msg = "O arquivo indicado como NFe não é um xml de NFe!";
             throw new Exception\RuntimeException($msg);
@@ -463,10 +474,22 @@ class ToolsNFe extends BaseTools
             'Ym',
             DateTime::convertSefazTimeToTimestamp($docnfe->getNodeValue('dhEmi'))
         );
+	    
         //carrega o cancelamento
         //pode ser um evento ou resultado de uma consulta com multiplos eventos
-        $doccanc = new Dom();
-        $doccanc->loadXMLFile($pathCancfile);
+        
+	$doccanc = new Dom();
+        //$doccanc->loadXMLFile($pathCancfile);
+	    
+	if (file_exists($pathCancfile)) {
+            //carrega o XML pelo caminho do arquivo informado
+            $doccanc->loadXMLFile($pathCancfile);
+        } else {
+            //carrega o XML pelo conteúdo
+            $doccanc->loadXMLString($pathCancfile);
+        }  
+	    
+	    
         $retEvento = $doccanc->getElementsByTagName('retEvento')->item(0);
         $eventos = $retEvento->getElementsByTagName('infEvento');
         foreach ($eventos as $evento) {
